@@ -24,14 +24,13 @@ router.post('/', async (req,res)=> {
     console.log('errrerer check user', err);
   }
   console.log('login-router-checkuser---->', checkUser);
-  if (checkUser.id) {
+  if (checkUser) {
     req.session.userId = checkUser.id;
     req.session.userEmail = checkUser.email;
     req.session.userName = checkUser.name;
-    console.log(req.session);
     res.sendStatus(200);
   } else {
-    res.status(401);
+    res.sendStatus(401);
   }
 });
 module.exports = router;

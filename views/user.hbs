@@ -1,16 +1,26 @@
 <h1>Welcome, {{userName}}</h1>
+<div><a href="/logout">Logout</a></div>
+<div><a href="/">Home</a></div>
 <div class="box" style="border: black 2px solid">
     <h2>Your actions</h2>
     <div class="item" >Your item</div>
-
+    <a href="/item">add post/item/auction</a>
 </div>
 <!--<ul>-->
 <!--    {{#unless user.userName}}-->
 <!--        <li><a href="/register">Register</a></li>-->
 <!--        <li><a href="/login">Login</a></li>-->
 <!--    {{/unless}}-->
-<!--    {{#if user.userName}}-->
-<!--        <li><a href="/logout">Logout</a></li>-->
-<!--        <li><a href="/user/{{user.userName}}"></a>{{user.userName}}</li>-->
-<!--    {{/if}}-->
+    {{#if data}}
+        {{#each data}}
+            <div id="{{this.id}}">
+                <div>posts: {{this.name}}</div>
+                <div>date1: {{this.dateStart}}</div>
+                <div>date2: {{this.dateEnd}}</div>
+                <button type="click" class="remove">Remove</button>
+                <button type="click" class="change"><a href="/change/{{this.id}}">Change</a> </button>
+            </div>
+        {{/each}}
+    {{/if}}
+<script src="/js/user.js"></script>
 <!--</ul>-->

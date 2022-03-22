@@ -12,23 +12,18 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const { email, name } = req.body;
   const password = sha256(req.body.password);
-  const checkUser = await User.findAll({
-    where: {
-      email,
-      name,
-    },
-  });
-  const [alies] = checkUser; // из массива вытаскиваем первый элемент и называем его alies
-  if (!alies && !alies?.id) {
+
+  try {
     const newUser = await User.create({ name, email, password });
     req.session.userId = newUser.id;
     req.session.userEmail = newUser.email;
     req.session.userName = newUser.name;
-    res.status(200);
-  } else {
-    res.status(401);
+    res.sendStatus(200);
+  } catch (err) {
+    console.log('Register error', err);
+    res.sendStatus(401);
   }
-  res.end();
+  // res.end();
 });
 
 module.exports = router;

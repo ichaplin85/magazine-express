@@ -1,0 +1,12 @@
+<h1>Welcome</h1>
+<ul>
+    {{#unless user.userName}}
+        <li><a href="/register">Register</a></li>
+        <li><a href="/login">Login</a></li>
+    {{/unless}}
+    {{#if user.userName}}
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/user/{{user.userName}}">{{user.userName}}</a></li>
+    {{/if}}
+    <div>{{userEmail}}</div>
+</ul>

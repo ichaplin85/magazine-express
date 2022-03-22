@@ -1,0 +1,17 @@
+
+<h1>Change lots {{userName}}</h1>
+<div class="change">
+    {{#if dataPost}}
+            <div>{{dataPost.name}}</div>
+            <div>{{dataPost.dateStart}}</div>
+            <div>{{dataPost.dateEnd}}</div>
+        <form action="/change/{{userName}}/{{id}}" name="change" method="post">
+            <input type="text" name="name">
+            <input type="text" name="dateStart">
+            <input type="text" name="dateEnd">
+            <button type="submit" id="change">Change values</button>
+        </form>
+    {{/if}}
+</div>
+
+<script src="/js/change.js" defer></script>

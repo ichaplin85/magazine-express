@@ -17,7 +17,7 @@ document.login.addEventListener('submit', async (e) => {
   });
   console.log(response);
   if (response.ok) {
-    window.location = 'http://localhost:3001/';
+    window.location = '/';
   } if (!response.ok) {
     alert('Введите правильный пароль, логин или перейдите на регистрацию');
     const addDiv = document.createElement('div');
